@@ -23,7 +23,8 @@
         }
 
         .pdf-page {
-            width: 210mm;
+            width: 100%;
+            max-width: 210mm;
             min-height: 297mm;
             background: white;
             margin-bottom: 10mm;
@@ -31,6 +32,144 @@
             page-break-after: always;
             position: relative;
             padding: 15mm;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .pdf-page {
+                min-height: auto;
+                margin-bottom: 5mm;
+                padding: 10mm;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header h2 {
+                font-size: 16px;
+            }
+
+            .header .period {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .section-title .icon {
+                font-size: 18px;
+            }
+
+            .pillars-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .footer {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                margin-top: 20px;
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .pdf-page {
+                padding: 8mm;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .header h2 {
+                font-size: 14px;
+            }
+
+            .header .period {
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 13px;
+                padding: 8px 10px;
+            }
+
+            .subsection-title {
+                font-size: 12px;
+            }
+
+            .team-member {
+                padding: 10px;
+            }
+
+            .team-member strong {
+                font-size: 14px;
+            }
+
+            li {
+                font-size: 12px;
+                padding-left: 18px;
+            }
+
+            li:before {
+                font-size: 14px;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .pillar-icon {
+                font-size: 24px;
+            }
+
+            .pillar-title {
+                font-size: 11px;
+            }
+
+            .pillar-desc {
+                font-size: 9px;
+            }
+
+            .footer {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .vision-text {
+                font-size: 12px;
+            }
+
+            .highlight-box {
+                padding: 12px;
+            }
+
+            .highlight-box h3 {
+                font-size: 14px;
+            }
+
+            .highlight-box p {
+                font-size: 12px;
+            }
         }
 
         @media print {
