@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Club de Tenis Chiguayante 2026-2028</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ecf0f1;
+            padding: 20px;
+        }
+
+        .pdf-container {
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+
+        .pdf-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            margin-bottom: 10mm;
+            box-shadow: 0 0 10mm rgba(0,0,0,0.2);
+            page-break-after: always;
+            position: relative;
+            padding: 15mm;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .pdf-container {
+                max-width: 100%;
+            }
+            .pdf-page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            .download-btn {
+                display: none !important;
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .header .period {
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 8px;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 15px 0 12px 0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .icon {
+            font-size: 20px;
+        }
+
+        .subsection-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #34495e;
+            margin: 10px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-member {
+            background: #f8f9fa;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid #7f8c8d;
+            border-radius: 4px;
+        }
+
+        .team-member strong {
+            color: #2c3e50;
+            font-size: 15px;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 8px 0;
+        }
+
+        li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .digital-section {
+            background: #ecf0f1;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border: 2px solid #7f8c8d;
+        }
+
+        .benefits-box {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .benefits-box h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .benefits-box p {
+            font-size: 12px;
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .highlight-box p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .highlight-box ul li:before {
+            color: #f1c40f;
+        }
+
+        .vision-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #34495e;
+            text-align: justify;
+            margin: 8px 0;
+        }
+
+        .vision-text strong {
+            color: #2c3e50;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 15mm;
+            left: 15mm;
+            right: 15mm;
+        }
+
+        .pillars-section {
+            margin: 25px 0 20px 0;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .pillar-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #7f8c8d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .pillar-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .pillar-title {
+            font-size: 12px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pillar-desc {
+            font-size: 10px;
+            color: #34495e;
+            line-height: 1.3;
+        }
+
+        .download-btn {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px auto;
+            transition: background 0.3s;
+            display: block;
+            width: fit-content;
+        }
+
+        .download-btn:hover {
+            background: #229954;
+        }
+
+        .content-section {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="generarPDF()">
+        📄 Descargar como PDF
+    </button>
+
+    <div class="pdf-container">
+        <!-- PÁGINA 1: PORTADA Y EQUIPO -->
+        <div class="pdf-page">
+            <div class="header">
+                <h1>🎾 PROPUESTA DE CANDIDATURA</h1>
+                <h2>DIRECTIVA CLUB DE TENIS CHIGUAYANTE</h2>
+                <div class="period">PERÍODO 2026-2028</div>
+            </div>
+
+            <div class="section-title">
+                <span class="icon">👥</span>
+                EQUIPO DIRECTIVO PROPUESTO
+            </div>
+            
+            <div class="team-member"><strong>JOSUÉ GARRIDO CONTRERAS</strong></div>
+            <div class="team-member"><strong>JAIME NÚÑEZ</strong></div>
+            <div class="team-member"><strong>ANDRÉS CONTRERAS</strong></div>
+            <div class="team-member"><strong>JESÚS GONZÁLEZ</strong></div>
+            <div class="team-member"><strong>CÉSAR BERNALES</strong></div>
+            <div class="team-member"><strong>BORIS SALGADO</strong></div>
+
+            <div class="section-title">
+                <span class="icon">🎯</span>
+                1. RECUPERACIÓN DEL TENIS CHIGUAYANTE
+            </div>
+            
+            <div class="content-section">
+                <div class="subsection-title">🤝 Trabajo Colaborativo con el Municipio</div>
+                <ul>
+                    <li>Áreas verdes</li>
+                    <li>Aseo y ornato</li>
+                    <li>Seguridad ciudadana</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <div class="subsection-title">🏘️ Reciprocidad con la Junta de Vecinos</div>
+                <strong style="font-size: 13px; margin-left: 15px;">Ejecución de Talleres:</strong>
+                <ul>
+                    <li>Yoga</li>
+                    <li>Zumba</li>
+                    <li>Tenis</li>
+                </ul>
+            </div>
+
+            <div class="section-title">
+                <span class="icon">🎓</span>
+                2. ESCUELAS Y TALLERES
+            </div>
+            
+            <ul>
+                <li>Acercamiento efectivo con colegios municipales y subvencionados</li>
+                <li>Creación de talleres en distintas categorías (Canchas: ROJA, VERDE, NARANJA)</li>
+                <li>Menores de proyección e iniciación</li>
+                <li>Adecuación de talleres para adultos</li>
+                <li>Torneo de finalización de talleres</li>
+            </ul>
+        </div>
+
+        <!-- PÁGINA 2: TRANSFORMACIÓN DIGITAL PARTE 1 -->
+        <div class="pdf-page">
+            <div class="section-title">
+                <span class="icon">💻</span>
+                3. TRANSFORMACIÓN DIGITAL Y MODERNIZACIÓN
+            </div>
+
+            <div class="digital-section">
+                <div class="content-section">
+                    <div class="subsection-title">🌐 Desarrollo de Plataforma Web</div>
+                    <ul>
+                        <li>Sitio web institucional del Club</li>
+                        <li>Portal de información para socios y comunidad</li>
+                        <li>Acceso a noticias, eventos y actividades</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <div class="subsection-title">📅 Sistema de Agendamiento Online</div>
+                    <ul>
+                        <li>Reserva de canchas mediante plataforma web</li>
+                        <li>Sistema de turnos automatizado</li>
+                        <li>Confirmación y recordatorios automáticos</li>
+                        <li>Visualización de disponibilidad en tiempo real</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <div class="subsection-title">⚙️ CRM Interno de Administración</div>
+                    <ul>
+                        <li>Gestión centralizada de socios</li>
+                        <li>Control de pagos y cuotas</li>
+                        <li>Histórico de actividades por socio</li>
+                        <li>Base de datos actualizada y segura</li>
+                        <li>Sistema de comunicación directa con socios</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <div class="subsection-title">📱 Credencial Digital de Socio</div>
+                    <ul>
+                        <li>Credencial con código QR único por socio</li>
+                        <li>Verificación instantánea del estado de pagos</li>
+                        <li>Control de acceso a instalaciones</li>
+                        <li>Identificación visual de socios al día</li>
+                        <li>Sistema de alertas para cuotas pendientes</li>
+                        <li>App móvil o credencial digital descargable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: TRANSFORMACIÓN DIGITAL PARTE 2 -->
+        <div class="pdf-page">
+            <div class="digital-section">
+                <div class="content-section">
+                    <div class="subsection-title">💰 Transparencia Financiera Digital</div>
+                    <strong style="font-size: 13px; margin-left: 15px;">Reportes Mensuales Automatizados:</strong>
+                    <ul>
+                        <li>Informe detallado de ingresos y egresos</li>
+                        <li>Flujo de caja mensual</li>
+                        <li>Gráficos y estadísticas financieras</li>
+                        <li>Publicación automática en plataforma web</li>
+                        <li>Notificación a socios de disponibilidad de reportes</li>
+                        <li>Trazabilidad total de movimientos financieros</li>
+                    </ul>
+                </div>
+
+                <div class="benefits-box">
+                    <h4>🔒 Beneficios de la Transparencia Digital</h4>
+                    <p>La implementación de estos sistemas digitales nos permitirá:</p>
+                    <ul>
+                        <li>Generar confianza y credibilidad en la gestión directiva mediante información verificable</li>
+                        <li>Proporcionar acceso permanente a la información financiera del club</li>
+                        <li>Realizar rendición de cuentas de forma continua y automática</li>
+                        <li>Eliminar dudas sobre el manejo de recursos mediante trazabilidad completa</li>
+                        <li>Fomentar la participación informada de todos los socios</li>
+                        <li>Establecer un estándar de gestión profesional y moderna</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-title">
+                <span class="icon">📱</span>
+                4. ACTIVACIÓN DE INFORMACIÓN
+            </div>
+            <ul>
+                <li>Instagram</li>
+                <li>Facebook</li>
+                <li>WhatsApp</li>
+            </ul>
+
+            <div class="section-title">
+                <span class="icon">🏆</span>
+                5. RANKING OFICIAL
+            </div>
+            <ul>
+                <li>Formulación de un ranking oficial de todos los socios</li>
+                <li>Ajustado al de la Asociación Regional y Federación de Tenis</li>
+                <li>Escalerilla oficial y torneos interclubes</li>
+            </ul>
+
+            <div class="section-title">
+                <span class="icon">💪</span>
+                6. ACTIVIDAD FÍSICA
+            </div>
+            <ul>
+                <li>Creación de un gimnasio exclusivo para socios en nuestras dependencias</li>
+            </ul>
+        </div>
+
+        <!-- PÁGINA 4: CONVENIOS, PROYECTOS Y PARTICIPACIÓN -->
+        <div class="pdf-page">
+            <div class="section-title">
+                <span class="icon">🤝</span>
+                7. CONVENIOS
+            </div>
+            <div class="subsection-title">Generación de Convenios con Universidades:</div>
+            <ul>
+                <li>Acondicionamiento físico</li>
+                <li>Kinesiológico</li>
+                <li>Nutrición</li>
+            </ul>
+
+            <div class="section-title">
+                <span class="icon">⚽</span>
+                8. PROYECTOS DEPORTIVOS
+            </div>
+            <div class="subsection-title">Participación en proyectos:</div>
+            <ul>
+                <li>Municipales</li>
+                <li>Gobierno Regional</li>
+                <li>IND</li>
+                <li>Implementación de arte deportivo en nuestras escuelas</li>
+                <li>Proyección deportiva de alumnos</li>
+            </ul>
+
+            <div class="section-title">
+                <span class="icon">🏘️</span>
+                9. PARTICIPACIÓN COMUNAL
+            </div>
+            <ul>
+                <li>Creación y participación en el Tenis Calle Comunal Chiguayante</li>
+                <li>Invitación a colegios y juntas de vecinos de la comuna</li>
+            </ul>
+
+            <div class="section-title">
+                <span class="icon">🏗️</span>
+                10. INFRAESTRUCTURA
+            </div>
+            <ul>
+                <li>Mantención de espacio deportivo</li>
+                <li>Recuperación de vestidores para socios</li>
+                <li>Generación de espacios físicos en mejores condiciones</li>
+                <li>Generación de proyecto para frontón</li>
+                <li>Techado de canchas vía proyecto (si nos alcanza el tiempo)</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>🎯 COMPROMISO CON LA TRANSPARENCIA Y LA MODERNIZACIÓN</h3>
+                <p>Entendemos que <strong>la confianza</strong> es el pilar fundamental de una gestión exitosa. El mayor temor de los socios históricamente ha sido la falta de claridad en el manejo de recursos.</p>
+                <p><strong>Por ello, nos comprometemos a implementar sistemas digitales que garanticen:</strong></p>
+                <ul>
+                    <li>Transparencia total en la gestión financiera</li>
+                    <li>Acceso permanente a información del club</li>
+                    <li>Control eficiente de instalaciones y socios</li>
+                    <li>Comunicación directa y fluida</li>
+                    <li>Modernización acorde a los tiempos actuales</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: VISIÓN -->
+        <div class="pdf-page">
+            <div class="section-title">
+                <span class="icon">🌟</span>
+                VISIÓN
+            </div>
+            <p class="vision-text">
+                Convertir al Club de Tenis Chiguayante en un <strong>referente regional de gestión deportiva moderna, transparente y participativa</strong>, posicionándonos como <strong>ejemplo para todos los clubes de la Octava Región</strong>. Nuestro objetivo es recuperar el prestigio del club y transformarlo en un espacio de desarrollo deportivo y social para toda la comunidad.
+            </p>
+            <p class="vision-text">
+                <strong>No queremos más peleas, discusiones y dimes y diretes sin sentido.</strong> Queremos darle el valor y el sentido que merece nuestro amado deporte. Es momento de trabajar unidos por el bien común del club y de todos sus socios.
+            </p>
+            <p class="vision-text">
+                Somos conscientes de que <strong>es un plan ambicioso</strong>, pero estamos convencidos de que <strong>es posible con una mirada a largo plazo</strong>. Los cambios profundos y duraderos no se logran de un día para otro, sino mediante un trabajo constante, planificado y comprometido. Cada iniciativa propuesta se implementará de manera gradual y sostenible, priorizando la solidez de las bases sobre la rapidez de los resultados. <strong>Nuestra gestión se enfocará en construir un legado sólido que perdure más allá de este período directivo.</strong>
+            </p>
+
+            <div class="pillars-section">
+                <h3 style="text-align: center; color: #2c3e50; margin: 25px 0 20px 0; font-size: 16px;">NUESTROS PILARES DE GESTIÓN</h3>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🤝</div>
+                        <div class="pillar-title">TRANSPARENCIA</div>
+                        <div class="pillar-desc">Gestión abierta y clara con rendición de cuentas continua</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">💻</div>
+                        <div class="pillar-title">MODERNIZACIÓN</div>
+                        <div class="pillar-desc">Tecnología al servicio de los socios y la eficiencia</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">👨‍👩‍👧‍👦</div>
+                        <div class="pillar-title">COMUNIDAD</div>
+                        <div class="pillar-desc">Integración con vecinos, colegios y organizaciones</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🎾</div>
+                        <div class="pillar-title">DEPORTE</div>
+                        <div class="pillar-desc">Desarrollo del tenis en todas sus categorías y niveles</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🏗️</div>
+                        <div class="pillar-title">INFRAESTRUCTURA</div>
+                        <div class="pillar-desc">Mejora continua de instalaciones y espacios</div>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">📈</div>
+                        <div class="pillar-title">CRECIMIENTO</div>
+                        <div class="pillar-desc">Visión a largo plazo con resultados sostenibles</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                ¡JUNTOS RECUPERAREMOS EL TENIS CHIGUAYANTE! 🎾
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function generarPDF() {
+            const btn = document.querySelector('.download-btn');
+            if (btn) btn.style.display = 'none';
+            
+            const elemento = document.querySelector('.pdf-container');
+            const opciones = {
+                margin: 0,
+                filename: 'Propuesta_Club_Tenis_Chiguayante_2026-2028.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true,
+                    logging: false
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                },
+                pagebreak: { mode: 'css', after: '.pdf-page' }
+            };
+            
+            html2pdf().set(opciones).from(elemento).save().then(() => {
+                setTimeout(() => {
+                    if (btn) btn.style.display = 'block';
+                }, 500);
+            });
+        }
+    </script>
+</body>
+</html>
