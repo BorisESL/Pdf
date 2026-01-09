@@ -67,8 +67,7 @@
             }
 
             .pillars-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
 
             .footer {
@@ -88,87 +87,133 @@
             }
 
             .pdf-page {
-                padding: 8mm;
+                padding: 5mm;
             }
 
             .header {
-                padding: 20px 15px;
+                padding: 15px 10px;
             }
 
             .header h1 {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .header h2 {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .header .period {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .section-title {
-                font-size: 13px;
-                padding: 8px 10px;
+                font-size: 12px;
+                padding: 7px 8px;
+                margin: 10px 0 8px 0;
+            }
+
+            .section-title .icon {
+                font-size: 16px;
             }
 
             .subsection-title {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .team-member {
-                padding: 10px;
+                padding: 8px;
+                margin-bottom: 8px;
             }
 
             .team-member strong {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             li {
-                font-size: 12px;
-                padding-left: 18px;
+                font-size: 11px;
+                padding: 4px 0;
+                padding-left: 16px;
             }
 
             li:before {
+                font-size: 13px;
+            }
+
+            .digital-section {
+                padding: 8px;
+            }
+
+            .benefits-box {
+                padding: 8px;
+            }
+
+            .benefits-box h4 {
+                font-size: 12px;
+            }
+
+            .benefits-box p {
+                font-size: 10px;
+            }
+
+            .pillars-section {
+                margin: 15px 0 15px 0;
+            }
+
+            .pillars-section h3 {
                 font-size: 14px;
+                margin-bottom: 10px;
             }
 
             .pillars-grid {
                 grid-template-columns: 1fr;
-                gap: 8px;
+                gap: 10px;
+            }
+
+            .pillar-card {
+                padding: 10px;
             }
 
             .pillar-icon {
-                font-size: 24px;
+                font-size: 22px;
+                margin-bottom: 4px;
             }
 
             .pillar-title {
-                font-size: 11px;
+                font-size: 10px;
+                margin-bottom: 3px;
             }
 
             .pillar-desc {
-                font-size: 9px;
+                font-size: 8px;
             }
 
             .footer {
-                font-size: 14px;
-                padding: 12px;
+                font-size: 13px;
+                padding: 10px;
+                margin-top: 15px;
             }
 
             .vision-text {
-                font-size: 12px;
+                font-size: 11px;
+                line-height: 1.5;
             }
 
             .highlight-box {
-                padding: 12px;
+                padding: 10px;
+                margin: 10px 0;
             }
 
             .highlight-box h3 {
-                font-size: 14px;
+                font-size: 13px;
+                margin-bottom: 8px;
             }
 
             .highlight-box p {
-                font-size: 12px;
+                font-size: 11px;
+            }
+
+            .content-section {
+                margin-bottom: 8px;
             }
         }
 
@@ -357,7 +402,7 @@
 
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 12px;
         }
 
@@ -398,10 +443,7 @@
             font-weight: bold;
             letter-spacing: 1px;
             border-radius: 5px;
-            position: absolute;
-            bottom: 15mm;
-            left: 15mm;
-            right: 15mm;
+            margin-top: 20px;
         }
 
 
